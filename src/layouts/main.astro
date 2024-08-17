@@ -1,5 +1,5 @@
 ---
-import "../assets/css/main.css"
+import "../assets/css/main.css";
 
 import { ViewTransitions } from "astro:transitions";
 
@@ -28,16 +28,28 @@ const { title } = Astro.props;
 </html>
 
 <script is:inline data-astro-rerun>
-  if (typeof Storage !== 'undefined') {
+  if (typeof Storage !== "undefined") {
     if (
-      localStorage.getItem('dark_mode') &&
-      localStorage.getItem('dark_mode') == 'true'
+      localStorage.getItem("dark_mode") &&
+      localStorage.getItem("dark_mode") == "true"
     ) {
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add("dark");
     }
   }
 </script>
 
 <script>
-  import "../assets/js/main"
+  import "../assets/js/main";
+</script>
+
+<script>
+  import nprogress from "nprogress";
+
+  document.addEventListener("astro:before-preparation", () => {
+    nprogress.start();
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    nprogress.done();
+  });
 </script>
